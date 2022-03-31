@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Ayo Hitung Kebutuhan Kalorimu!</string>
+    <string name="BMR_intro">BMR adalah kebutuhan kalori minimal yang dipakai organ-organ tubuh untuk melakukan tugas dasarnya. Ini meliputi pernapasan, sirkulasi, dan produksi sel. Prosesnya dikenal sebagai metabolisme. Dengan memenuhi BMR, tubuh dapat tumbuh dan berfungsi dengan baik.</string>
+    <string name="berat_badan">Berat Badan (kg)</string>
+    <string name="tinggi_badan">Tinggi Badan (cm)</string>
+    <string name="usia">Usia</string>
+    <string name="jenis_kelamin">Jenis kelamin</string>
+    <string name="pria">Pria</string>
+    <string name="wanita">Wanita</string>
+    <string name="hitung">Hitung</string>
+    <string name="reset">Reset</string>
+    <string name="berat_invalid">Berat Badan tidak boleh kosong!</string>
+    <string name="tinggi_invalid">Tinggi Badan tidak boleh kosong!</string>
+    <string name="usia_invalid">Usia tidak boleh kosong!</string>
+    <string name="bmr_x">BMR Anda: %1$.2f</string>
+    <string name="keterangan">Setiap orang memiliki kebutuhan kalori yang berbeda sesuai kondisi tubuhnya, namun jumlah kalori yang telah disebutkan merupakan patokan yang dapat didekati untuk dikonsumsi.</string>
+</resources>
