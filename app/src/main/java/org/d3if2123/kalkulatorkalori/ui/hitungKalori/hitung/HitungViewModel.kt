@@ -3,13 +3,21 @@ package org.d3if2123.kalkulatorkalori.ui.hitungKalori
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.d3if2123.kalkulatorkalori.db.KaloriDao
+import org.d3if2123.kalkulatorkalori.db.KaloriEntity
 import org.d3if2123.kalkulatorkalori.model.HasilKalori
 import org.d3if2123.kalkulatorkalori.model.KategoriKalori
 
-class MainViewModel: ViewModel() {
+class MainViewModel(private val db: KaloriDao): ViewModel() {
 
     private val hasilKalori = MutableLiveData<HasilKalori?>()
     private val navigasi = MutableLiveData<KategoriKalori?>()
+
+    val data = db.getLastKalori()
 
     fun hitungBMR(berat: Float, tinggi: Float, usia: Float, isMale: Boolean) {
         val bmr = if (isMale) {
@@ -19,6 +27,18 @@ class MainViewModel: ViewModel() {
         }
         val kategori = getKategori(bmr, isMale)
         hasilKalori.value = HasilKalori(bmr, kategori)
+
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val dataKalori = KaloriEntity(
+                    berat = berat,
+                    tinggi = tinggi,
+                    usia = usia,
+                    isMale = isMale
+                )
+                db.insert(dataKalori)
+            }
+        }
     }
 
     fun getKategori(kalori: Double, isMale: Boolean): KategoriKalori {

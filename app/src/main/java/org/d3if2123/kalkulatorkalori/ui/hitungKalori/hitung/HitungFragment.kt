@@ -1,26 +1,31 @@
-package org.d3if2123.kalkulatorkalori.ui.hitungKalori
+package org.d3if2123.kalkulatorkalori.ui.hitungKalori.hitung
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import org.d3if2123.kalkulatorkalori.R
 import org.d3if2123.kalkulatorkalori.databinding.FragmentHitungBinding
+import org.d3if2123.kalkulatorkalori.db.KaloriDao
+import org.d3if2123.kalkulatorkalori.db.KaloriDb
 import org.d3if2123.kalkulatorkalori.model.HasilKalori
 import org.d3if2123.kalkulatorkalori.model.KategoriKalori
+import org.d3if2123.kalkulatorkalori.ui.hitungKalori.MainViewModel
 
 class HitungFragment : Fragment() {
     private lateinit var binding: FragmentHitungBinding
 
     private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        val db = KaloriDb.getInstance(requireContext())
+        val factory = HitungViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[MainViewModel::class.java]
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,6 +44,10 @@ class HitungFragment : Fragment() {
             if (it == null) return@observe
             findNavController().navigate(HitungFragmentDirections.actionHitungFragmentToSaranFragment(it))
             viewModel.selesaiNavigasi()
+        })
+        viewModel.data.observe(viewLifecycleOwner, {
+            if (it == null) return@observe
+            Log.d("HitungFragment", "Data Tersimpan. ID = ${it.id}")
         })
     }
 
