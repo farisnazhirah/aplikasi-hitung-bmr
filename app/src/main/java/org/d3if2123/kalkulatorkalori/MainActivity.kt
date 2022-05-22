@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.button.setOnClickListener { (hitungBMR()) }
         binding.resetButton.setOnClickListener { (resetBMR()) }
+        viewModel.getHasilKalori().observe(this, { showResult(it) })
     }
 
     private fun resetBMR() {
@@ -36,17 +37,8 @@ class MainActivity : AppCompatActivity() {
         binding.kategori.visibility = GONE
     }
 
-    private fun hitungBMR(berat: Float, tinggi: Float, usia: Float, isMale: Boolean): HasilKalori {
-        val bmr = if (isMale) {
-            66 + (13.7 * berat) + (5 * tinggi) - (6.8 * usia)
-        } else {
-            655 + (9.6 * berat) + (1.8 * tinggi) - (4.7 * usia)
-        }
-        val kategori = getKategori(bmr, isMale)
-        return HasilKalori(bmr, kategori)
-    }
-
-    private fun showResult(result: HasilKalori) {
+    private fun showResult(result: HasilKalori?) {
+        if (result == null) return
         binding.bmrTextView.text = getString(R.string.bmr_x, result.bmr)
         binding.kategori.text = getString(R.string.kategori_kalori, getKategoriLabel(result.kategori))
         binding.bmrTextView.visibility = VISIBLE
@@ -59,42 +51,23 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.berat_invalid, Toast.LENGTH_LONG).show()
             return
         }
-
         val tinggi = binding.tinggiBadanInp.text.toString().toFloat()
         if (TextUtils.isEmpty(tinggi.toString())) {
             Toast.makeText(this, R.string.tinggi_invalid, Toast.LENGTH_LONG).show()
             return
         }
-
         val usia = binding.usiaInp.text.toString().toFloat()
         if (TextUtils.isEmpty(usia.toString())) {
             Toast.makeText(this, R.string.usia_invalid, Toast.LENGTH_LONG).show()
             return
         }
-
         val selectedId = binding.radioGroup.checkedRadioButtonId
-        val result = viewModel.hitungBMR(
+        viewModel.hitungBMR(
             berat,
             tinggi,
             usia,
             selectedId == R.id.priaRadioButton
         )
-        showResult(result)
-    }
-
-    private fun getKategori(kalori: Double, isMale: Boolean): KategoriKalori {
-        val kategori = if (isMale) {
-            when {
-                kalori < 2500 -> KategoriKalori.RENDAH
-                else -> KategoriKalori.TINGGI
-            }
-        } else {
-            when {
-                kalori < 2000 -> KategoriKalori.RENDAH
-                else -> KategoriKalori.TINGGI
-            }
-        }
-        return kategori
     }
 
     private fun getKategoriLabel(kategori: KategoriKalori): String {
@@ -105,4 +78,3 @@ class MainActivity : AppCompatActivity() {
         return getString(stringRes)
     }
 }
-
