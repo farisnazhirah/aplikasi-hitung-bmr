@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ayo Hitung Kebutuhan Kalorimu!</string>
+    <string name="app_name">KalkuLori</string>
     <string name="BMR_intro">BMR adalah kebutuhan kalori minimal yang dipakai organ-organ tubuh untuk melakukan tugas dasarnya. Ini meliputi pernapasan, sirkulasi, dan produksi sel. Prosesnya dikenal sebagai metabolisme. Dengan memenuhi BMR, tubuh dapat tumbuh dan berfungsi dengan baik. Pada umumnya kalori yang dibutuhkan sebesar 2500 kalori/hari untuk laki-laki dewasa dan 2000 kalori/hari untuk wanita dewasa.</string>
     <string name="berat_badan">Berat Badan (kg)</string>
     <string name="tinggi_badan">Tinggi Badan (cm)</string>
@@ -17,5 +17,9 @@
     <string name="rendah">Rendah</string>
     <string name="tinggi">Tinggi</string>
     <string name="kategori_kalori">Kategori Kebutuhan Kalori: %1$s</string>
+    <string name="judul_rendah">Rekomendasi asupan untuk Anda</string>
+    <string name="judul_tinggi">Rekomendasi asupan untuk Anda</string>
+    <string name="saran_rendah">Cobalah untuk makan porsi besar, seperti burger berukuran raksasa ini.</string>
+    <string name="saran_tinggi">Cobalah untuk olahraga lari. Kemanapun boleh, asal tidak lari dari kehidupan.</string>
 
 </resources>

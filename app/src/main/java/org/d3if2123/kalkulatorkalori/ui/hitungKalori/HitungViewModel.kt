@@ -1,4 +1,4 @@
-package org.d3if2123.kalkulatorkalori
+package org.d3if2123.kalkulatorkalori.ui.hitungKalori
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
