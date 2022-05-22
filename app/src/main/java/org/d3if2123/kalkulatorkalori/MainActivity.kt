@@ -6,12 +6,17 @@ import android.text.TextUtils
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import org.d3if2123.kalkulatorkalori.databinding.ActivityMainBinding
 import org.d3if2123.kalkulatorkalori.model.HasilKalori
 import org.d3if2123.kalkulatorkalori.model.KategoriKalori
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this)[MainViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val selectedId = binding.radioGroup.checkedRadioButtonId
-        val result = hitungBMR(
+        val result = viewModel.hitungBMR(
             berat,
             tinggi,
             usia,
