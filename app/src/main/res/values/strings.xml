@@ -14,4 +14,8 @@
     <string name="usia_invalid">Usia tidak boleh kosong!</string>
     <string name="bmr_x">BMR Anda: %1$.2f</string>
     <string name="keterangan">Setiap orang memiliki kebutuhan kalori yang berbeda sesuai kondisi tubuhnya, namun jumlah kalori yang telah disebutkan merupakan patokan yang dapat didekati untuk dikonsumsi.</string>
+    <string name="rendah">Rendah</string>
+    <string name="tinggi">Tinggi</string>
+    <string name="kategori_kalori">Kategori Kebutuhan Kalori: %1$s</string>
+
 </resources>
