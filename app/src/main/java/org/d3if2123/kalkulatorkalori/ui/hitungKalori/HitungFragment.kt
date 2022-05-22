@@ -2,14 +2,14 @@ package org.d3if2123.kalkulatorkalori.ui.hitungKalori
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import org.d3if2123.kalkulatorkalori.R
 import org.d3if2123.kalkulatorkalori.databinding.FragmentHitungBinding
 import org.d3if2123.kalkulatorkalori.model.HasilKalori
@@ -24,13 +24,34 @@ class HitungFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHitungBinding.inflate(layoutInflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.button.setOnClickListener { (hitungBMR()) }
         binding.resetButton.setOnClickListener { (resetBMR()) }
+        binding.saranButton.setOnClickListener { viewModel.mulaiNavigasi() }
         viewModel.getHasilKalori().observe(requireActivity(), { showResult(it) })
+        viewModel.getNavigasi().observe(viewLifecycleOwner, {
+            if (it == null) return@observe
+            findNavController().navigate(HitungFragmentDirections.actionHitungFragmentToSaranFragment(it))
+            viewModel.selesaiNavigasi()
+        })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_about) {
+            findNavController().navigate(
+                R.id.action_hitungFragment_to_aboutFragment)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun resetBMR() {
@@ -48,6 +69,7 @@ class HitungFragment : Fragment() {
         binding.kategori.text = getString(R.string.kategori_kalori, getKategoriLabel(result.kategori))
         binding.bmrTextView.visibility = VISIBLE
         binding.kategori.visibility = VISIBLE
+        binding.saranButton.visibility = VISIBLE
     }
 
     private fun hitungBMR() {

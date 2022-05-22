@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import org.d3if2123.kalkulatorkalori.R
 import org.d3if2123.kalkulatorkalori.databinding.FragmentSaranBinding
 import org.d3if2123.kalkulatorkalori.model.KategoriKalori
@@ -13,6 +14,7 @@ import org.d3if2123.kalkulatorkalori.model.KategoriKalori
 class SaranFragment: Fragment() {
 
     private lateinit var binding: FragmentSaranBinding
+    private val args: SaranFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentSaranBinding.inflate(layoutInflater, container, false)
@@ -20,7 +22,7 @@ class SaranFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        updateUI(KategoriKalori.RENDAH)
+        updateUI(args.kategori)
     }
 
     private fun updateUI(kategori: KategoriKalori) {

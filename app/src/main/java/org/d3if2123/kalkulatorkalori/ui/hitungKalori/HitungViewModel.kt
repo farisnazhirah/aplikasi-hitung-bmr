@@ -9,6 +9,7 @@ import org.d3if2123.kalkulatorkalori.model.KategoriKalori
 class MainViewModel: ViewModel() {
 
     private val hasilKalori = MutableLiveData<HasilKalori?>()
+    private val navigasi = MutableLiveData<KategoriKalori?>()
 
     fun hitungBMR(berat: Float, tinggi: Float, usia: Float, isMale: Boolean) {
         val bmr = if (isMale) {
@@ -36,4 +37,14 @@ class MainViewModel: ViewModel() {
     }
 
     fun getHasilKalori(): LiveData<HasilKalori?> = hasilKalori
+
+    fun mulaiNavigasi() {
+        navigasi.value = hasilKalori.value?.kategori
+    }
+
+    fun selesaiNavigasi() {
+        navigasi.value = null
+    }
+
+    fun getNavigasi(): LiveData<KategoriKalori?> = navigasi
 }
