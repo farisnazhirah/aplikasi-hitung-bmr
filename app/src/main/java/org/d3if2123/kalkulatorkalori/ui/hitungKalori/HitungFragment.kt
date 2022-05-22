@@ -1,5 +1,6 @@
 package org.d3if2123.kalkulatorkalori.ui.hitungKalori
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.*
@@ -32,6 +33,7 @@ class HitungFragment : Fragment() {
         binding.button.setOnClickListener { (hitungBMR()) }
         binding.resetButton.setOnClickListener { (resetBMR()) }
         binding.saranButton.setOnClickListener { viewModel.mulaiNavigasi() }
+        binding.shareButton.setOnClickListener { shareData() }
         viewModel.getHasilKalori().observe(requireActivity(), { showResult(it) })
         viewModel.getNavigasi().observe(viewLifecycleOwner, {
             if (it == null) return@observe
@@ -70,6 +72,7 @@ class HitungFragment : Fragment() {
         binding.bmrTextView.visibility = VISIBLE
         binding.kategori.visibility = VISIBLE
         binding.saranButton.visibility = VISIBLE
+        binding.buttonGroup.visibility = VISIBLE
     }
 
     private fun hitungBMR() {
@@ -103,5 +106,32 @@ class HitungFragment : Fragment() {
             KategoriKalori.TINGGI -> R.string.tinggi
         }
         return getString(stringRes)
+    }
+
+    private fun shareData() {
+        val selectedId = binding.radioGroup.checkedRadioButtonId
+        val gender = if (selectedId == R.id.priaRadioButton)
+            getString(R.string.pria)
+        else
+            getString(R.string.wanita)
+
+        val message = getString(
+            R.string.share_template,
+            binding.beratBadanInp.text,
+            binding.tinggiBadanInp.text,
+            binding.usiaInp.text,
+            gender,
+            binding.bmrTextView.text,
+            binding.kategori.text,
+        )
+
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
+        if (shareIntent.resolveActivity(
+                requireActivity().packageManager
+            ) != null
+        ) {
+            startActivity(shareIntent)
+        }
     }
 }

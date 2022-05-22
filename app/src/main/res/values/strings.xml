@@ -22,6 +22,8 @@
     <string name="saran_rendah">ini kalori rendah.</string>
     <string name="saran_tinggi">Ini Kalori tinggi.</string>
     <string name="lihat_saran">Lihat Saran</string>
+    <string name="share">Share</string>
+    <string name="share_template">Berat badan: %1$s kg\nTinggi badan: %2$s cm\nUsia: %3$s\nJenis kelamin: %4$s\n\n%5$s\n%6$s</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="copyright">KalkuLori merupakan sebuah aplikasi Android untuk menghitung kebutuhan kalori harian yang dapat dijadikan patokan jumlah kalori yang harus dikonsumsi oleh pengguna.\n\n Temukan kodenya di https://github.com/farisnazhirah/aplikasi-hitung-bmr\n\nCopyright © 2021 Faris Nazhirah.\nAll rights reserved.</string>
 

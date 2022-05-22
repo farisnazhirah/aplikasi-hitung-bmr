@@ -37,7 +37,8 @@
                 android:id="@+id/beratBadan_inp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/berat_badan"/>
+                android:hint="@string/berat_badan"
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +55,8 @@
                 android:id="@+id/tinggiBadan_inp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/tinggi_badan"/>
+                android:hint="@string/tinggi_badan"
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,7 +73,8 @@
                 android:id="@+id/usia_inp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/usia"/>
+                android:hint="@string/usia"
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,14 +177,31 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/lihat_saran"
-            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kategori"
+            app:layout_constraintEnd_toStartOf="@+id/shareButton"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@+id/kategori" />
+
+        <Button
+            android:id="@+id/shareButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/share"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/saranButton"
+            app:layout_constraintTop_toTopOf="@+id/saranButton" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/buttonGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:constraint_referenced_ids="saranButton,shareButton"
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
