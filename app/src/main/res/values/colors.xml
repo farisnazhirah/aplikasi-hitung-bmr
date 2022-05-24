@@ -10,4 +10,7 @@
     <color name="yellow_200">#F4D03F</color>
     <color name="yellow_250">#D4AC0D</color>
     <color name="yellow_dark">#B7950B</color>
+
+    <color name="rendah">#F57F17</color>
+    <color name="tinggi">#D32F2F</color>
 </resources>

@@ -11,6 +11,6 @@ interface KaloriDao {
     @Insert
     fun insert (kalori: KaloriEntity)
 
-    @Query ("SELECT * FROM kalori ORDER BY id DESC LIMIT 1")
-    fun getLastKalori(): LiveData<KaloriEntity?>
+    @Query ("SELECT * FROM kalori ORDER BY id DESC")
+    fun getLastKalori(): LiveData<List<KaloriEntity?>>
 }
