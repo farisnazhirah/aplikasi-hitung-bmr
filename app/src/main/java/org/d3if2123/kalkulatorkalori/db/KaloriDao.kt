@@ -15,6 +15,10 @@ interface KaloriDao {
     @Query ("SELECT * FROM kalori ORDER BY id DESC")
     fun getLastKalori(): LiveData<List<KaloriEntity?>>
 
+    @Query ("DELETE FROM kalori")
+    fun clearData()
+
     @Delete
     fun delete (kalori: KaloriEntity)
+
 }
