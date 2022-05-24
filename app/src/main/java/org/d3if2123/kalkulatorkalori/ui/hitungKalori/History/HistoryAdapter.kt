@@ -1,8 +1,10 @@
 package org.d3if2123.kalkulatorkalori.ui.hitungKalori.History
 
+import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,7 +17,8 @@ import org.d3if2123.kalkulatorkalori.model.hitungKalori
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HistoryAdapter: ListAdapter<KaloriEntity, HistoryAdapter.ViewHolder>(DIFF_CALLBACK) {
+class HistoryAdapter(private val viewModel: HistoryViewModel,
+                     private val context: Context) : ListAdapter<KaloriEntity, HistoryAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<KaloriEntity>() {
@@ -32,14 +35,16 @@ class HistoryAdapter: ListAdapter<KaloriEntity, HistoryAdapter.ViewHolder>(DIFF_
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemHistoryBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(binding, viewModel, context)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(private val binding: ItemHistoryBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemHistoryBinding,
+                     private val viewModel: HistoryViewModel,
+                     private val context: Context) : RecyclerView.ViewHolder(binding.root) {
 
         private val dateFormatter = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
         fun bind(item: KaloriEntity) = with(binding) {
@@ -58,6 +63,20 @@ class HistoryAdapter: ListAdapter<KaloriEntity, HistoryAdapter.ViewHolder>(DIFF_
             val gender = root.context.getString(
                 if (item.isMale) R.string.pria else R.string.wanita)
             dataTextView.text = root.context.getString(R.string.data_x, item.berat, item.tinggi, item.usia, gender)
+
+            deleteButton.setOnClickListener {
+                AlertDialog.Builder(context)
+                    .setTitle("Konfimasi hapus")
+                    .setMessage("Apakah kamu yakin mau menghapus data ini?")
+                    .setPositiveButton(
+                        "Hapus"
+                    ) { _, _ ->
+                        viewModel.hapusHistori(item)
+                    }
+                    .setNegativeButton("Tidak jadi", null)
+                    .setIcon(R.drawable.ic_baseline_delete_24)
+                    .show()
+            }
         }
     }
 }

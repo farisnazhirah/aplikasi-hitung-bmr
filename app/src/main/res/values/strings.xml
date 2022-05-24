@@ -19,7 +19,22 @@
     <string name="kategori_kalori">Kategori Kebutuhan Kalori: %1$s</string>
     <string name="judul_rendah">Rekomendasi Asupan</string>
     <string name="judul_tinggi">Rekomendasi Asupan</string>
-    <string name="saran_rendah">ini kalori rendah.</string>
+    <string name="saran_rendah">
+        Untuk jumlah kalori Anda, dianjurkan asupan mendekati 2000 kalori:\nSarapan:\n
+        2 lembar roti gandum dan 1 sendok makan selai kacang.\n
+        4 butir telur rebus.\n
+        1 buah jeruk kecil.\n
+        250 gram yogurt rendah lemak.\n
+        \n
+        Makan Siang:\n
+        250 gram dada ayam panggang.\n
+        1 mangkuk kecil nasi merah.\n
+        80 gram brokolo rebus.\n
+        \n
+        Makan Malam:\n
+        250 gram daging ayam/sapi rendah lemak.\n
+        70 gram jamur tumis dengan bawang, cabai, dan 2 sendok minyak zaitun.\n
+        90 gram pasta gandum.\n </string>
     <string name="saran_tinggi">Ini Kalori tinggi.</string>
     <string name="lihat_saran">Lihat Saran</string>
     <string name="share">Share</string>

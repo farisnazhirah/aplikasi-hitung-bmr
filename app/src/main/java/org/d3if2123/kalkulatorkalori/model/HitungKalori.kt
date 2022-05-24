@@ -11,12 +11,12 @@ fun KaloriEntity.hitungKalori(): HasilKalori {
 
     val kategori = if (isMale) {
         when {
-            bmr < 2500 -> KategoriKalori.RENDAH
+            bmr <= 2500 -> KategoriKalori.RENDAH
             else -> KategoriKalori.TINGGI
         }
     } else {
         when {
-            bmr < 2000 -> KategoriKalori.RENDAH
+            bmr <= 2000 -> KategoriKalori.RENDAH
             else -> KategoriKalori.TINGGI
         }
     }

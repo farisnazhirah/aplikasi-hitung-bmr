@@ -1,9 +1,8 @@
 package org.d3if2123.kalkulatorkalori.ui.hitungKalori.hitung
 
-import android.content.Intent
+    import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -13,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import org.d3if2123.kalkulatorkalori.R
 import org.d3if2123.kalkulatorkalori.databinding.FragmentHitungBinding
-import org.d3if2123.kalkulatorkalori.db.KaloriDao
 import org.d3if2123.kalkulatorkalori.db.KaloriDb
 import org.d3if2123.kalkulatorkalori.model.HasilKalori
 import org.d3if2123.kalkulatorkalori.model.KategoriKalori

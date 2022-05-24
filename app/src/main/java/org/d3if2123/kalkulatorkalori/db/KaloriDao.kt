@@ -2,6 +2,7 @@ package org.d3if2123.kalkulatorkalori.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -13,4 +14,7 @@ interface KaloriDao {
 
     @Query ("SELECT * FROM kalori ORDER BY id DESC")
     fun getLastKalori(): LiveData<List<KaloriEntity?>>
+
+    @Delete
+    fun delete (kalori: KaloriEntity)
 }

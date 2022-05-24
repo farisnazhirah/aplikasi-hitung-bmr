@@ -1,7 +1,6 @@
 package org.d3if2123.kalkulatorkalori.ui.hitungKalori.History
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +28,7 @@ class HistoryFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        myAdapter = HistoryAdapter()
+        myAdapter = HistoryAdapter(viewModel, requireContext())
         with(binding.recyclerView) {
             addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
             adapter = myAdapter
