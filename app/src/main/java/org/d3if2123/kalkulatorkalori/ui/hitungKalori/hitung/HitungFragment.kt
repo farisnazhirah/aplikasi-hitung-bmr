@@ -43,6 +43,8 @@ class HitungFragment : Fragment() {
             findNavController().navigate(HitungFragmentDirections.actionHitungFragmentToSaranFragment(it))
             viewModel.selesaiNavigasi()
         })
+
+        viewModel.scheduleUpdater(requireActivity().application)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

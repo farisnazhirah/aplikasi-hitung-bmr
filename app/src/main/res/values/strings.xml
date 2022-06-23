@@ -72,5 +72,9 @@
     <string name="hapus">Hapus</string>
     <string name="batal">Batal</string>
     <string name="koneksi_error">Koneksi Error</string>
+    <string name="channel_name">Updater</string>
+    <string name="channel_desc">Update data otomatis</string>
+    <string name="notif_title">Kalori Reminder!</string>
+    <string name="notif_text">Jangan lupa untuk cek kalorimu lagi yaa...</string>
 
 </resources>
