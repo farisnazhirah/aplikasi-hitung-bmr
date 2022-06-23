@@ -1,6 +1,6 @@
 package org.d3if2123.kalkulatorkalori.ui.hitungKalori.hitung
 
-    import android.content.Intent
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.*
@@ -15,15 +15,15 @@ import org.d3if2123.kalkulatorkalori.databinding.FragmentHitungBinding
 import org.d3if2123.kalkulatorkalori.db.KaloriDb
 import org.d3if2123.kalkulatorkalori.model.HasilKalori
 import org.d3if2123.kalkulatorkalori.model.KategoriKalori
-import org.d3if2123.kalkulatorkalori.ui.hitungKalori.MainViewModel
+import org.d3if2123.kalkulatorkalori.ui.hitungKalori.HitungViewModel
 
 class HitungFragment : Fragment() {
     private lateinit var binding: FragmentHitungBinding
 
-    private val viewModel: MainViewModel by lazy {
+    private val viewModel: HitungViewModel by lazy {
         val db = KaloriDb.getInstance(requireContext())
         val factory = HitungViewModelFactory(db.dao)
-        ViewModelProvider(this, factory)[MainViewModel::class.java]
+        ViewModelProvider(this, factory)[HitungViewModel::class.java]
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -13,7 +13,7 @@ import org.d3if2123.kalkulatorkalori.model.HasilKalori
 import org.d3if2123.kalkulatorkalori.model.KategoriKalori
 import org.d3if2123.kalkulatorkalori.model.hitungKalori
 
-class MainViewModel(private val db: KaloriDao): ViewModel() {
+class HitungViewModel(private val db: KaloriDao): ViewModel() {
 
     private val hasilKalori = MutableLiveData<HasilKalori?>()
     private val navigasi = MutableLiveData<KategoriKalori?>()
